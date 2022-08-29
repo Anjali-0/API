@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="getUsers()">
+        Get user
+    </button>
+    <div id="i1"></div>
+    <script>
+        const getUsers=()=>{
+          
+           let i1 = document.getElementById("i1");
+            let Url="https://jsonplaceholder.typicode.com/albums";
+            fetch(Url)
+            .then((res)=>
+            {return res.json();
+            })
+            .then((finalResult)=>{
+                finalResult.map(
+                    (value)=>{
+                       
+                        if(value.userId!=3 && value.userId!=5)
+                        {
+                            
+                            let result = "<h1>"+value.title+"</h1>";
+                            i1.innerHTML += result;
+                        }
+                    }
+                )});
+            
+        };
+    </script>
+</body>
+</html>
